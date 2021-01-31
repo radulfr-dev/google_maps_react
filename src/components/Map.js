@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
+import SearchBox from './SearchBox';
 
 function UnwrappedMap() {
     return (
@@ -25,6 +26,7 @@ function Map() {
         mapElement={ <div style={{ height: '100%' }} /> }
 
         />
+        <SearchBox />
         
     </div>
   );
