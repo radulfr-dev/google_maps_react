@@ -1,6 +1,7 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { test } from './actions';
+import Map from './components/Map';
 
 function App() {
   const test = useSelector(state => state.test);
@@ -8,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{ test }</h1>
+      <Map />
     </div>
   );
 }
