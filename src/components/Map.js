@@ -6,7 +6,7 @@ function UnwrappedMap() {
     return (
         <GoogleMap 
             defaultZoom={10}
-            defaultCenter={{ lat: 0.0, lng: 0.0 }}
+            defaultCenter={{ lat: 41.3851, lng: 2.1734 }}
         />
     )
 }
