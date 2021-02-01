@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import testReducer from './testReducer';
+import addressReducer from './addressReducer';
 
 const allReducers = combineReducers({
-    test: testReducer
+    address: addressReducer
 });
 
 export default allReducers;

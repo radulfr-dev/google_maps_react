@@ -12,6 +12,7 @@ const store = createStore(allReducers);
 ReactDOM.render(
   <Provider store={ store }>
       <App />
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCOXeLcJz5RdKVWs5GEK79BzFtYRHoCBA&libraries=places"></script>
   </Provider>,
   document.getElementById("root")
 );

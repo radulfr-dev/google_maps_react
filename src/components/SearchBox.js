@@ -1,30 +1,30 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
+import { useEffect } from 'react';
+import { useSelector, useDispatch, connect } from 'react-redux';
 import './styles/SearchBox.scss';
+import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng} from 'react-places-autocomplete';
+import { updateAddress } from '../actions/addressActions';
 
-function UnwrappedMap() {
-    return (
-        <GoogleMap 
-            defaultZoom={10}
-            defaultCenter={{ lat: 41.390205, lng: 2.154007 }}
-        />
-    )
-}
-
-const WrappedMap = withScriptjs(withGoogleMap(UnwrappedMap));
-
-function Map() {
-  const test = useSelector(state => state.test);
+function SearchBox() {
+  const address = useSelector(state => state.address);
   const dispatch = useDispatch();
+
+  console.log(address);
 
   return (
         <div className="SearchBox">
             <form>
-                <input placeholder="Tu busqueda aquí..." />
+                <input onChange={ (e) => {
+                    dispatch(updateAddress(e.target.value))
+                } } placeholder="Tu busqueda aquí..." />
                 <button>Go!</button>
             </form>
+            <h1>{ address }</h1>
         </div>
   );
 }
 
-export default Map;
+const mapStateToProps = state => ({
+    address: state.address.test
+});
+
+export default connect(mapStateToProps, {updateAddress})(SearchBox);

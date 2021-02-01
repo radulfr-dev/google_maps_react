@@ -1,6 +1,5 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { test } from './actions';
 import Map from './components/Map';
 
 function App() {
