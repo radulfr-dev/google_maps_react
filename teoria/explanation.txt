@@ -1,0 +1,12 @@
+I found the issue to be that the RegisteredUser class had too many responsibilities, in that it is a class designed to handle
+operations regarding the User, but in this instance it was also handling data about the services.
+
+The solution I've implemented in the included file is to take the functionality relevant to the services out into its own class,
+and then to import those methods when needed. As there is not a state to be concerned with within the Service class, I decided to
+make the methods static.
+
+I also find that this makes the classes easier to read, which would help with maintenace in the future.
+
+Another suggestion I would have, if we were using TypeScript, would be to use dependency injection for the service type, by introducing
+interfaces into the codebase. In this way, we could write more dynamic code that could retrieve the different prices dynamically
+based on the service type, as the interface would allow us to extend functionality dependent on this variable.
