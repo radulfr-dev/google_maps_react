@@ -1,12 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
 import SearchBox from './SearchBox';
+import { updateCoordinates } from '../actions/coordinatesActions';
 
 function UnwrappedMap() {
+  const coordinates = useSelector(state => state.coordinates);
+  const dispatch = useDispatch();
+
+  console.log(coordinates);
+
     return (
         <GoogleMap 
             defaultZoom={10}
-            defaultCenter={{ lat: 41.3851, lng: 2.1734 }}
+            defaultCenter={coordinates}
         />
     )
 }

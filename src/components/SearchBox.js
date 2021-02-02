@@ -58,13 +58,6 @@ function SearchBox() {
           </div>
         )}
       </PlacesAutocomplete>
-            <form>
-                <input onChange={ (e) => {
-                    dispatch(updateAddress(e.target.value))
-                } } placeholder="Tu busqueda aquí..." />
-                <button>Go!</button>
-            </form>
-            <h1>{ address }</h1>
         </div>
   );
 }
