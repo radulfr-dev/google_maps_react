@@ -1,18 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 import { GoogleMap, withScriptjs, withGoogleMap } from 'react-google-maps';
 import SearchBox from './SearchBox';
 import { updateCoordinates } from '../actions/coordinatesActions';
 
 function UnwrappedMap() {
   const coordinates = useSelector(state => state.coordinates);
-  const dispatch = useDispatch();
-
-  console.log(coordinates);
 
     return (
         <GoogleMap 
             defaultZoom={10}
-            defaultCenter={coordinates}
+            defaultCenter={{ lat: 41.3851, lng: 2.1734 }}
+            center={coordinates}
         />
     )
 }
@@ -20,8 +18,7 @@ function UnwrappedMap() {
 const WrappedMap = withScriptjs(withGoogleMap(UnwrappedMap));
 
 function Map() {
-  const test = useSelector(state => state.test);
-  const dispatch = useDispatch();
+  const coordinates = useSelector(state => state.coordinates);
 
   return (
     <div className="Map" style={{ width: '100vw', height: '100vh' }}>
@@ -38,4 +35,8 @@ function Map() {
   );
 }
 
-export default Map;
+const mapStateToProps = state => ({
+  coordinates: state.coordinates
+});
+
+export default connect(mapStateToProps, { updateCoordinates })(Map);
