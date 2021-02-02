@@ -23,6 +23,11 @@ function SearchBox() {
       })
       .catch(error => console.error('Error', error));
   };  
+  
+  function boldSubstring(suggestionDesc){
+    let newString = suggestionDesc.replace(address, "<b>" + address + "</b>");
+    return newString;
+  }
 
 
   return (
@@ -59,7 +64,7 @@ function SearchBox() {
                       style,
                     })}
                   >
-                    <span>{suggestion.description}</span>
+                    <span dangerouslySetInnerHTML={{ __html: boldSubstring(suggestion.description)}} />
                   </div>
                 );
               })}
