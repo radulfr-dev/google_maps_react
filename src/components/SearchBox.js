@@ -4,6 +4,7 @@ import './styles/SearchBox.scss';
 import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng} from 'react-places-autocomplete';
 import { updateAddress } from '../actions/addressActions';
 import { updateCoordinates } from '../actions/coordinatesActions';
+import { toggleMarker } from '../actions/markerActions';
 
 function SearchBox() {
   const address = useSelector(state => state.address);
@@ -15,7 +16,7 @@ function SearchBox() {
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         dispatch(updateCoordinates(latLng))
-        
+        dispatch(toggleMarker())
       })
       .catch(error => console.error('Error', error));
   };  
@@ -63,7 +64,6 @@ function SearchBox() {
           </div>
         )}
       </PlacesAutocomplete>
-      <p>{ JSON.stringify(coordinates) }</p>
         </div>
   );
 }
