@@ -7,7 +7,7 @@ const allReducers = combineReducers({
     address: addressReducer,
     coordinates: coordinatesReducer,
     defaultCoordinates: { lat: 41.3851, lng: 2.1734 },
-    markerShown: markerReducer
+    marker: markerReducer
 });
 
 export default allReducers;

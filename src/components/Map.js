@@ -8,14 +8,16 @@ import markerReducer from '../reducers/markerReducer';
 function UnwrappedMap() {
   const coordinates = useSelector(state => state.coordinates);
   const defaultCoordinates = useSelector(state => state.defaultCoordinates);
-  const markerShown = useSelector(state => state.markerShown);
+  const marker = useSelector(state => state.marker);
+
+  console.log(marker);
 
     return (
         <GoogleMap 
             defaultZoom={10}
             center={coordinates}
         >
-          {markerShown && <Marker position={coordinates} />}
+          {marker.displayed && <Marker position={coordinates} label={marker.desc}/>}
         </GoogleMap>
     )
 }
